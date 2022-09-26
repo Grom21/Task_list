@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div>
+    <form method="post">
+        <input type="text" name="date" placeholder="Дата" />
+        <input type="text" name="description" placeholder="Описание">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>Список задач</div>
+<div th:each="task:${tasks}">
+    <span th:text = "*{task.id}"></span>
+    <span th:text = "*{task.date}"></span>
+    <span th:text = "*{task.description}"></span>
+    <span th:switch = "*{task.done}">
+        <span th:case="true">Выполнена</span>
+        <span th:case="false">Не выполнена</span>
+        <span th:case="*">Статус не определен</span>
+    </span>
+    <form th:method="delete" th:action="@{/delete/{id}(id=${task.id})}">
+        <button th:text="Удалить" type="submit"></button>
+    </form>
+    <form th:method="done" th:action="@{/done/{id}(id=${task.id})}">
+        <button th:text="Выполнено" type="submit"></button>
+    </form>
+</div>
+
+</body>
+</html>
