@@ -1,7 +1,7 @@
-package com.example.step.controller;
+package com.example.task_list_maven.controller;
 
-import com.example.step.model.Task;
-import com.example.step.repository.TaskRepository;
+import com.example.task_list_maven.model.Task;
+import com.example.task_list_maven.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import java.util.Map;
 @Controller
 public class TaskController {
     @Autowired
-    private TaskRepository taskRepository;
+    private  TaskRepository taskRepository;
 
     @GetMapping
     public String main(Map<String, Object> model) {
